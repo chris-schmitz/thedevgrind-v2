@@ -11,6 +11,6 @@
 
 <template>
     <div>
-        
+        Msg: {{ msg }} !
     </div>
 </template>

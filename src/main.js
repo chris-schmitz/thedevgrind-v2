@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-require('./globalStyles/index.scss')
 
-window.jQuery = require('jquery')
+let jquery = require('jquery')
+window.jQuery = jquery
 require('bootstrap-sass')
+
+import './globalStyles/index.scss'
 
 new Vue({
     el: 'body',

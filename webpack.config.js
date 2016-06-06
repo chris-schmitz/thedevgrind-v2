@@ -31,12 +31,11 @@ module.exports = {
         test: /\.html$/,
         loader: 'vue-html'
       },
-      { test: /\.scss$/, loaders: ['style', 'css', 'sass'] },
-      // {
-      //   test: /\.scss$/,
-      //   loader: ['style', 'css', 'sass'],
-      //   exclude: /node_modules/
-      // },
+      { 
+        test: /\.scss$/, 
+        loaders: ['style', 'css', 'sass'],
+        exclude: /node_modules/
+      },
       {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'url',

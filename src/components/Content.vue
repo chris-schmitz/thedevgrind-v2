@@ -9,7 +9,7 @@
 </script>
 <template>
     <div>
-        {{ msg }}
+        Msg: {{ msg }}
     </div>
 </template>
 
