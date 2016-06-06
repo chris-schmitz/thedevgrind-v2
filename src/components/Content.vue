@@ -8,10 +8,12 @@
     }
 </script>
 <template>
-    <div>
+    <div class="app-content container">
         Msg: {{ msg }}
     </div>
 </template>
 
 <style>
+    .app-content{
+    }
 </style>
