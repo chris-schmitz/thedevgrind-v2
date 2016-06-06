@@ -10,7 +10,7 @@
 </style>
 
 <template>
-    <div>
-        Msg: {{ msg }} !
+    <div class="well">
+        Msg: {{ msg }}
     </div>
 </template>

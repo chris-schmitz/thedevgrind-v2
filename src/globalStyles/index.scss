@@ -1,10 +1,19 @@
+$color1: #D5D5D5; // background 
+$color2: #052834; // text
+$color3: #189995; // highlight 1
+$color4: #F2C220; // highlight 2
+
+$icon-font-path: '../../node_modules/bootstrap-sass/assets/fonts/bootstrap/';
+@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../../node_modules/animate.css/animate';
+
 body,html{
     height: 100%;
     width: 100%;
 }
 body{
-    background-color: #D5D5D5;
-    color: #052834;
+    background-color: $color1;
+    color: $color2;
     div{
         border: 1px dashed red;
     }
