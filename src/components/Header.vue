@@ -38,10 +38,10 @@
     <div class="app-header container flex-container">
         <!-- <img src="http://placekitten.com/150/150" class="col-xs-3"> -->
         <div class="btn-group btn-group-justified nav-button-group">
-            <a class="btn btn-primary nav-buttons">About</a>
-            <a class="btn btn-primary nav-buttons">Examples</a>
-            <a class="btn btn-primary nav-buttons">Faux Blog</a>
-            <a class="btn btn-primary nav-buttons">Contact</a>
+            <a v-link="{path: 'about'}" class="btn btn-primary nav-buttons">About</a>
+            <a v-link="{path: 'examples'}" class="btn btn-primary nav-buttons">Examples</a>
+            <a v-link="{path: 'blog'}" class="btn btn-primary nav-buttons">Faux Blog</a>
+            <a v-link="{path: 'contact'}" class="btn btn-primary nav-buttons">Contact</a>
         </div>
     </div>
 </template>

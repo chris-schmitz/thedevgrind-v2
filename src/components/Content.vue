@@ -8,12 +8,12 @@
     }
 </script>
 <template>
-    <div class="app-content container">
-        Msg: {{ msg }}
-    </div>
 </template>
 
 <style>
     .app-content{
+        .well{
+            height: 500px;
+        }
     }
 </style>
