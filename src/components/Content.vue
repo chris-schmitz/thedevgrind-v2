@@ -8,12 +8,17 @@
     }
 </script>
 <template>
+    <div class="app-content container">
+        <div class="well">
+            <router-view></router-view>
+        </div>
+    </div>
 </template>
 
 <style>
     .app-content{
-        .well{
+/*        .well{
             height: 500px;
         }
-    }
+*/    }
 </style>

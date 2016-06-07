@@ -1,7 +1,7 @@
 <script>
     export default {
         data: () => {
-            return {msg: 'header works'}
+            return {}
         }
     }
 </script>
@@ -38,6 +38,7 @@
     <div class="app-header container flex-container">
         <!-- <img src="http://placekitten.com/150/150" class="col-xs-3"> -->
         <div class="btn-group btn-group-justified nav-button-group">
+            <a v-link="{path: '/'}" class="btn btn-primary nav-buttons">LOGO</a>
             <a v-link="{path: 'about'}" class="btn btn-primary nav-buttons">About</a>
             <a v-link="{path: 'examples'}" class="btn btn-primary nav-buttons">Examples</a>
             <a v-link="{path: 'blog'}" class="btn btn-primary nav-buttons">Faux Blog</a>
