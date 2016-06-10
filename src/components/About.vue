@@ -1,9 +1,17 @@
 <script>
+    let markdown = require('markdown').markdown
+
     module.exports = {
         data: () => {
             return {
                 content: null,
                 image: null
+            }
+        },
+        computed:{
+            contentToHtml: function (){
+                let markup = this.content || ""
+                return markdown.toHTML(markup)
             }
         },
         ready: function () {
@@ -18,8 +26,6 @@
                 // come up with a standard way of display an error,
                 // either dispatch up to parent or handle through shared state
             })
-            // query the api with promise
-            // then set the text and image
         }
     }    
 </script>
@@ -27,7 +33,7 @@
 <template>
     <div class="about-component">
         <p class="text">
-            {{ content }}
+            {{{ contentToHtml }}}
         </p>
         <div class="image">
             <img v-bind:src="image">

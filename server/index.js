@@ -11,7 +11,20 @@ app.get('/about', function (req,res){
     // handoff to a service that returns the data(? is that how it should be done w/ node?)
     console.log('hit the about route')
     let payload = {
-        text: "here's some content returned from the server",
+        text: `
+# here's some markdown returned from the server and rendered as html
+bla bla bla
+
+[checkout this cool link!](www.google.com)
+
+- List item 1
+- List item 2
+
+And now a code block:
+
+    //how to lock up a browser window: 
+    while(1 == 1){ console.log('lol') }
+        `,
         image: "https://placebear.com/400/400"
     }
     res.send(payload)
