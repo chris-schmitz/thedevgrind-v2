@@ -24,18 +24,23 @@ import Contact from './components/Contact.vue'
 // Map these vue-router paths to the various components
 router.map({
     '/':{
+        name: "Home",
         component: Home
     },
     '/about': {
+        name: "About Me",
         component: About
     },
     '/examples': {
+        name: "Code Examples",
         component: Examples
     },
     '/blog': {
+        name: "Faux Blog",
         component: Blog
     },
     '/contact': {
+        name: "Contact Me",
         component: Contact
     }
 })

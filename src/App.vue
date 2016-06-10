@@ -1,7 +1,6 @@
 <template>
     <div>
         <app-header></app-header>
-        <h2 class="heading">{{ currentComponent }}</h2>
         <app-content></app-content>
     </div>
 </template>
@@ -13,7 +12,6 @@ import Content from "./components/Content.vue"
 export default {
     data: () => {
         return {
-            currentComponent: 'Pull the name of the current component'
         }
     },
     components: {
@@ -28,9 +26,5 @@ export default {
 
     body {
       font-family: Helvetica, sans-serif;
-    }
-    .heading{
-        text-align: center;
-        color:$color2;
     }
 </style>
