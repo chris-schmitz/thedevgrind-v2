@@ -1,11 +1,13 @@
 <script>
+    import Markdownable from '../mixins/Markdownable'
+
     module.exports = {
         data: () => {
             return {
-                content: null,
                 image: null
             }
         },
+        mixins:[Markdownable],
         ready: function () {
             let me = this
 
@@ -30,7 +32,7 @@
             <img v-bind:src="image">
         </div>
         <p class="text">
-            {{ content }}
+            {{{ contentToHtml }}}
         </p>
     </div>
 </template>

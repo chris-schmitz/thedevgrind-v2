@@ -1,21 +1,15 @@
 <script>
-    let markdown = require('markdown').markdown
+    import Markdownable from '../mixins/Markdownable'
 
     module.exports = {
         data: () => {
             return {
-                content: null,
                 storedContent: null,
                 image: null,
                 editingState: false
             }
         },
-        computed:{
-            contentToHtml: function (){
-                let markup = this.content || ""
-                return markdown.toHTML(markup)
-            }
-        },
+        mixins:[Markdownable],
         events:{
             startEditing: ['storeExistingContent','activateTextArea'],
             cancelEdit: ['restorePreviousContent','deactivateTextArea'],
