@@ -29,6 +29,9 @@ And now a code block:
     }
     res.send(payload)
 })
+app.post('/about', function (req,res){
+    res.send('successfully stored')
+})
 
 app.get('/contact', function (req,res){
     let payload = {

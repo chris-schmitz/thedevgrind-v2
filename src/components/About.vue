@@ -5,6 +5,7 @@
         data: () => {
             return {
                 content: null,
+                storedContent: null,
                 image: null,
                 editingState: false
             }
@@ -18,7 +19,7 @@
         events:{
             startEditing: ['storeExistingContent','activateTextArea'],
             cancelEdit: ['restorePreviousContent','deactivateTextArea'],
-            storeEdit: ['storeEditedContent', 'deactivateTextArea']
+            storeEdit: ['persistUpdatedContent', 'deactivateTextArea']
             // toggleEditingMode: function (editingState){
             //     this.editingState = editingState
             // }
@@ -35,6 +36,36 @@
                 // come up with a standard way of display an error,
                 // either dispatch up to parent or handle through shared state
             })
+        },
+        methods:{
+            storeExistingContent: function (){
+                console.log('content stored')
+                this.storedContent = this.content
+            },
+            restorePreviousContent: function (){
+                console.log('restored previous content')
+                this.content = this.storedContent
+                this.storedContent = null
+            },
+            persistUpdatedContent: function (){
+                console.log('data is about to be persisted ')
+                this.$http({
+                    url: '/about',
+                    method: 'POST',
+                    data: { pageContent: this.content}
+                }).then(function (response){
+                    this.storedContent = null
+                    this.$dispatch('showNotification', "success", "Data stored successfully.")
+                }).catch(function (response){
+                    this.$dispatch('showNotification', 'danger', "There was an error storing this data.")
+                })
+            },
+            activateTextArea: function (){
+                this.editingState = true
+            },
+            deactivateTextArea: function (){
+                this.editingState = false
+            }
         }
     }    
 </script>

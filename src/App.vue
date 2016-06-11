@@ -1,6 +1,7 @@
 <template>
     <div class="container">
         <app-header></app-header>
+        <app-notification></app-notification>
         <app-content></app-content>
         <app-controls v-if="admin === true"></app-controls>
     </div>
@@ -10,6 +11,7 @@
 import Header from "./components/Header.vue"
 import Content from "./components/Content.vue"
 import Controls from "./components/Controls.vue"
+import Notification from "./components/Notification.vue"
 
 export default {
     data: () => {
@@ -23,12 +25,25 @@ export default {
     },
     components: {
         "app-header": Header,
+        "app-notification": Notification,
         "app-content": Content,
         "app-controls": Controls
     },
     events:{
-        toggleEditingMode: function (editingState){
-            this.$broadcast('toggleEditingMode', editingState)
+        cancelEdit: function (...payload){
+            this.$broadcast('cancelEdit', ...payload)
+        },
+        startEditing: function (...payload){
+            this.$broadcast('startEditing', ...payload)
+        },
+        storeEdit: function (...payload){
+            this.$broadcast('storeEdit', ...payload)
+        },
+        // toggleEditingMode: function (editingState){
+        //     this.$broadcast('toggleEditingMode', editingState)
+        // },
+        showNotification: function (...payload){
+            this.$broadcast('showNotification', ...payload)
         }
     }
 }

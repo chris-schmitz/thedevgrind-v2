@@ -9,7 +9,17 @@ import VueResource from 'vue-resource'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
-let router = new VueRouter
+// Custom directives
+// consider moving to its own module
+Vue.directive('visible', {
+    update: function (newValue, oldValue){
+        let state = newValue === true ? 'visible' : 'hidden'
+        this.el.setAttribute('style', 'visibility:' + state)
+    }
+})
+
+// custom transitions
+// consider moving to its own module
 
 // Import our root vue component
 import App from './App.vue'
@@ -22,6 +32,7 @@ import Blog from './components/Blog.vue'
 import Contact from './components/Contact.vue'
 
 // Map these vue-router paths to the various components
+let router = new VueRouter
 router.map({
     '/':{
         name: "Home",
