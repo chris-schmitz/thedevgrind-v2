@@ -12,7 +12,7 @@
     }
 </script>
 <template>
-    <div class="app-content container">
+    <div class="app-content">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h1>{{ currentComponent }}</h1>

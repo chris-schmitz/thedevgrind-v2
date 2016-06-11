@@ -1,22 +1,35 @@
 <template>
-    <div>
+    <div class="container">
         <app-header></app-header>
         <app-content></app-content>
+        <app-controls v-if="admin === true"></app-controls>
     </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue"
 import Content from "./components/Content.vue"
+import Controls from "./components/Controls.vue"
 
 export default {
     data: () => {
         return {
+            // note that hiding the controls this way does not guarantee that someone will not 
+            // have access to the controls, it just hides them for convenience sake. The enforcement
+            // of whether or not someone has access to update the markdown on this page needs to be handled
+            // on the server side by validating a password or authentication token.
+            admin: true
         }
     },
     components: {
         "app-header": Header,
-        "app-content": Content
+        "app-content": Content,
+        "app-controls": Controls
+    },
+    events:{
+        toggleEditingMode: function (editingState){
+            this.$broadcast('toggleEditingMode', editingState)
+        }
     }
 }
 </script>

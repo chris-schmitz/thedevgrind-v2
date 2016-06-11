@@ -5,7 +5,8 @@
         data: () => {
             return {
                 content: null,
-                image: null
+                image: null,
+                editingState: false
             }
         },
         computed:{
@@ -13,6 +14,14 @@
                 let markup = this.content || ""
                 return markdown.toHTML(markup)
             }
+        },
+        events:{
+            startEditing: ['storeExistingContent','activateTextArea'],
+            cancelEdit: ['restorePreviousContent','deactivateTextArea'],
+            storeEdit: ['storeEditedContent', 'deactivateTextArea']
+            // toggleEditingMode: function (editingState){
+            //     this.editingState = editingState
+            // }
         },
         ready: function () {
             let me = this
@@ -32,9 +41,10 @@
 
 <template>
     <div class="about-component">
-        <p class="text">
+        <p v-if="editingState === false" class="text">
             {{{ contentToHtml }}}
         </p>
+        <textarea v-if="editingState === true" v-model="content" class="text form-control"></textarea>
         <div class="image">
             <img v-bind:src="image">
         </div>
@@ -51,10 +61,12 @@
         .text{
             flex:2;
             padding:10px;
+            margin: 5px;
         }
 
         .image{
             flex:1;
+            margin: 5px;
         }
     }
 </style>
