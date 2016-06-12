@@ -45,6 +45,7 @@
     .about-component{
         display:flex;
         flex-direction: row;
+        flex-wrap: wrap;
 
         .text{
             flex:2;
