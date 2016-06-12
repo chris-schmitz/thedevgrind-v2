@@ -1,13 +1,21 @@
 <script>
+    import Markdownable from '../mixins/Markdownable'
+    import Editable from '../mixins/Editable'
     module.exports = {
         data () {
-            return {msg: 'Home'}
-        }
+            return {content: '#home'}
+        },
+        mixins:[Markdownable, Editable]
     }    
 </script>
 
 <template>
-    <h1>{{msg}}</h1>    
+    <div class="about-component">
+        <p v-if="editingState === false" class="text">
+            {{{ contentToHtml }}}
+        </p>
+        <textarea v-if="editingState === true" v-model="content" class="text form-control"></textarea>
+    </div>
 </template>
 
 <style>

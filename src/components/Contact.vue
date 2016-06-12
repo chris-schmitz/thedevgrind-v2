@@ -1,5 +1,6 @@
 <script>
     import Markdownable from '../mixins/Markdownable'
+    import Editable from '../mixins/Editable'
 
     module.exports = {
         data: () => {
@@ -7,7 +8,7 @@
                 image: null
             }
         },
-        mixins:[Markdownable],
+        mixins:[Markdownable, Editable],
         ready: function () {
             let me = this
 
@@ -31,9 +32,10 @@
         <div class="image">
             <img v-bind:src="image">
         </div>
-        <p class="text">
+        <p v-if="editingState === false" class="text">
             {{{ contentToHtml }}}
         </p>
+        <textarea v-if="editingState === true" v-model="content" class="text form-control"></textarea>
     </div>
 </template>
 
