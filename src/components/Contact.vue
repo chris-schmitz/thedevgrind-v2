@@ -3,34 +3,21 @@
     import Editable from '../mixins/Editable'
 
     module.exports = {
+        props:['contact'],
         data: () => {
-            return {
-                image: null
-            }
+            return {}
         },
         mixins:[Markdownable, Editable],
-        ready: function () {
-            let me = this
-
-            this.$http({
-                url: '/contact'
-            }).then(response => {
-                me.content = response.data.text,
-                me.image = response.data.image
-            }).catch(response => {
-                // come up with a standard way of display an error,
-                // either dispatch up to parent or handle through shared state
-            })
-            // query the api with promise
-            // then set the text and image
+        ready: function (){
+            this.content = this.contact.content
         }
-    }    
+    }
 </script>
 
 <template>
     <div class="about-component">
         <div class="image">
-            <img v-bind:src="image">
+            <img v-bind:src="contact.image">
         </div>
         <p v-if="editingState === false" class="text">
             {{{ contentToHtml }}}

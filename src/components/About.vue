@@ -1,30 +1,20 @@
 <script>
     import Markdownable from '../mixins/Markdownable'
     import Editable from '../mixins/Editable'
+    import state from '../state/state.js'
 
     module.exports = {
+        props:['about'],
         data: () => {
-            return {
-                image: null,
-            }
+            return {}
         },
         mixins:[Markdownable, Editable],
-        ready: function () {
-            let me = this
-
-            this.$http({
-                url: '/about'
-            }).then(response => {
-                me.content = response.data.text,
-                me.image = response.data.image
-            }).catch(response => {
-                // come up with a standard way of display an error,
-                // either dispatch up to parent or handle through shared state
-            })
-        },
         methods:{
+        },
+        ready: function (){
+            this.content = this.about.content
         }
-    }    
+    }
 </script>
 
 <template>
@@ -34,7 +24,7 @@
         </p>
         <textarea v-if="editingState === true" v-model="content" class="text form-control"></textarea>
         <div class="image">
-            <img v-bind:src="image">
+            <img v-bind:src="about.image">
         </div>
     </div>
 </template>

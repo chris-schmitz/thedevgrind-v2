@@ -2,7 +2,7 @@
     <div class="container">
         <app-header></app-header>
         <app-notification></app-notification>
-        <app-content></app-content>
+        <app-content v-if="loaded" :pages="pages"></app-content>
         <app-controls v-if="admin === true"></app-controls>
     </div>
 </template>
@@ -16,7 +16,14 @@ import Notification from "./components/Notification.vue"
 export default {
     data: () => {
         return {
-            // note that hiding the controls this way does not guarantee that someone will not 
+            // note that the upside about handling this through passing props instead of
+            // shared state is that
+            loaded: false,
+            pages: {
+                about: null,
+                contact: null
+            } ,
+            // note that hiding the controls this way does not guarantee that someone will not
             // have access to the controls, it just hides them for convenience sake. The enforcement
             // of whether or not someone has access to update the markdown on this page needs to be handled
             // on the server side by validating a password or authentication token.
@@ -45,6 +52,19 @@ export default {
         showNotification: function (...payload){
             this.$broadcast('showNotification', ...payload)
         }
+    },
+    ready: function (){
+        let vm = this
+        this.$http({url: '/pages'})
+            .then(function (res){
+                res.data.forEach(function (pageData){
+                    vm.pages[pageData.page] = pageData
+                    vm.loaded = true
+                })
+            })
+            .catch(function (res){
+                console.log(JSON.stringify(res))
+            })
     }
 }
 </script>

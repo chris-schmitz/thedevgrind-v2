@@ -1,5 +1,6 @@
 <script>
     module.exports = {
+        props: ['pages'],
         data () {
             return {
             }
@@ -18,7 +19,10 @@
                 <h1>{{ currentComponent }}</h1>
             </div>
             <div class="panel-body">
-                <router-view></router-view>
+                <router-view
+                    :about="pages.about"
+                    :contact="pages.contact"
+                ></router-view>
             </div>
         </div>
     </div>
