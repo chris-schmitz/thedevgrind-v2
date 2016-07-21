@@ -1,7 +1,6 @@
 <script>
     import Markdownable from '../mixins/Markdownable'
     import Editable from '../mixins/Editable'
-    import state from '../state/state.js'
 
     module.exports = {
         props:['about'],
@@ -9,10 +8,13 @@
             return {}
         },
         mixins:[Markdownable, Editable],
-        methods:{
-        },
         ready: function (){
             this.content = this.about.content
+        },
+        watch:{
+            'content': function (current,previous){
+                this.about.content = current
+            }
         }
     }
 </script>

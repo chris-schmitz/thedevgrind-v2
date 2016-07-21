@@ -20,6 +20,10 @@ Vue.directive('visible', {
 
 // custom transitions
 // consider moving to its own module
+Vue.transition('flip',{
+    enterClass: 'flipInX',
+    leaveClass: 'flipOutX'
+})
 
 // Import our root vue component
 import App from './App.vue'
@@ -43,7 +47,7 @@ router.map({
     //     component: Home
     // },
     '/about': {
-        name: "About Me",
+        name: "about",
         component: About
     },
     // '/examples': {
@@ -55,7 +59,7 @@ router.map({
     //     component: Blog
     // },
     '/contact': {
-        name: "Contact Me",
+        name: "contact",
         component: Contact
     }
 })

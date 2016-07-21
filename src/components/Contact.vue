@@ -10,6 +10,11 @@
         mixins:[Markdownable, Editable],
         ready: function (){
             this.content = this.contact.content
+        },
+        watch:{
+            'content': function (current,previous){
+                this.contact.content = current
+            }
         }
     }
 </script>

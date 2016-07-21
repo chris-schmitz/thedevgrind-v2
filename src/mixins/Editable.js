@@ -20,25 +20,22 @@ let Editable = {
     },
     methods: {
         storeExistingContent: function (){
-            console.log('content stored')
             this.storedContent = this.content
         },
         restorePreviousContent: function (){
-            console.log('restored previous content')
             this.content = this.storedContent
             this.storedContent = null
         },
-        persistUpdatedContent: function (){
-            console.log('data is about to be persisted ')
+        persistUpdatedContent: function (apiEndpoint){
             this.$http({
-                url: '/about',
-                method: 'POST',
-                data: { pageContent: this.content}
+                url: `/${apiEndpoint}`,
+                method: 'PUT',
+                data: { content: this.content}
             }).then(function (response){
                 this.storedContent = null
-                this.$dispatch('showNotification', "success", "Data stored successfully.")
+                this.$dispatch('showNotification', "success", response.data.message)
             }).catch(function (response){
-                this.$dispatch('showNotification', 'danger', "There was an error storing this data.")
+                this.$dispatch('showNotification', 'danger', response.data.message)
             })
         },
         activateTextArea: function (){

@@ -27,12 +27,12 @@
                 this.show = false
             }
         }
-    }    
+    }
 </script>
 
 <template>
     <div class="notification-container">
-        <div v-show="show" class="alert" v-bind:class="alertType">
+        <div v-show="show" transition="flip" class="animated alert" v-bind:class="alertType">
             <button type="button" class="close" @click="close">&times;</button>
             <span class="alert-message">{{ message }}</span>
         </div>

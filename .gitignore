@@ -2,3 +2,5 @@
 node_modules/
 public/
 npm-debug.log
+database/db/*
+!database/db/.gitkeep

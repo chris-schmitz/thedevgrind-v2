@@ -16,10 +16,10 @@
             },
             storeEdit: function (){
                 this.editing = false
-                this.$dispatch('storeEdit')
+                this.$dispatch('storeEdit', this.$route.name)
             }
         }
-    }    
+    }
 </script>
 
 <template>
