@@ -46,6 +46,9 @@
 
         .image{
             flex:1;
+            img{
+                max-width: 500px;
+            }
         }
     }
 </style>

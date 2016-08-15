@@ -3,10 +3,15 @@ let app = express()
 let bodyParser = require('body-parser')
 let multer = require('multer')
 let upload = multer()
+let jwt = require('jsonwebtoken')
+
+
 app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+
+// Refactor to use mongoose instead of mongodb
 let MongoClient = require('mongodb').MongoClient
 let assert = require('assert')
 let ObjectId = require('mongodb').ObjectID
@@ -90,6 +95,30 @@ app.put('/contact', (req,res) => {
     })
 })
 
+let apiRoutes = express.Router()
+
+apiRoutes.post('/authenticate', (req,res) => {
+    // get user from req.body
+    // look up user in schema
+    let foundUser = {};
+
+    if(foundUser.password !== req.body.password)
+
+    // - if there was an error finding the user -> return error
+    // - if the user doesn't exist -> return error
+    // - if the user's password doesn't match req password-> return error
+
+    res.json({message: 'placeholder for auth page'})
+})
+apiRoutes.post('/verifytoken', (req,res) => {
+    res.json({message: 'placeholder for jwt token verification'})
+})
+apiRoutes.post('/logout', (req,res) => {
+    res.json({message: 'placeholder for logout'})
+})
+
+app.use(apiRoutes)
+
 app.listen(3001, function (){
-    console.log('listening on 3001')
+    console.log('listening on http://localhost:3001')
 })

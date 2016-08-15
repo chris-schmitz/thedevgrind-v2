@@ -7,7 +7,12 @@
         },
         computed: {
             currentComponent: function() {
-                return this.$route.name
+                if(this.$route.name === 'about'){
+                    return "Checkout My Readme"
+                } else if (this.$route.name === 'contact'){
+                    return "Get In Contact"
+                }
+
             }
         }
     }
