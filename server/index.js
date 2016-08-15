@@ -102,7 +102,7 @@ apiRoutes.post('/authenticate', (req,res) => {
     // look up user in schema
     let foundUser = {};
 
-    if(foundUser.password !== req.body.password)
+    // if(foundUser.password !== req.body.password)
 
     // - if there was an error finding the user -> return error
     // - if the user doesn't exist -> return error
